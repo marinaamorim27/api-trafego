@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import SegmentoEstrada, Leitura
+from .models import SegmentoEstrada, Leitura, Carro, Sensor, RegistoPassagem
 
 class LeituraSerializer(serializers.ModelSerializer):
     intensidade = serializers.SerializerMethodField()
@@ -20,3 +20,9 @@ class SegmentoEstradaSerializer(serializers.ModelSerializer):
 
     def get_total_leituras(self, obj):
         return obj.leituras.count()
+
+
+class RegistoPassagemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RegistoPassagem
+        fields = "__all__"
